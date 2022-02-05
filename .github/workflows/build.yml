@@ -1,0 +1,62 @@
+name: ci
+
+on: push
+
+env:
+  DEBIAN_FRONTEND: noninteractive
+
+jobs:
+  run_system_deps:
+    runs-on: ubuntu-20.04
+    container: ubuntu:20.04
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: system bootstrap
+        run: |
+          bash ci/deb_install.sh
+
+      - name: git clone folly
+        run: |
+          git clone https://github.com/facebook/folly
+
+      - name: compile
+        shell: bash
+        run: |
+          cd folly 
+          python3 ./build/fbcode_builder/getdeps.py install-system-deps --recursive
+          python3 ./build/fbcode_builder/getdeps.py --allow-system-packages build
+
+      - name: test
+        shell: bash
+        run: |
+          cd folly 
+          python3 ./build/fbcode_builder/getdeps.py --allow-system-packages test
+
+  run_no_system_deps:
+    runs-on: ubuntu-20.04
+    container: ubuntu:20.04
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: system bootstrap
+        run: |
+          bash ci/deb_install.sh
+
+      - name: git clone folly
+        run: |
+          git clone https://github.com/facebook/folly
+
+      - name: compile
+        shell: bash
+        run: |
+          cd folly 
+          python3 ./build/fbcode_builder/getdeps.py --allow-system-packages build
+
+      - name: test
+        shell: bash
+        run: |
+          cd folly 
+          python3 ./build/fbcode_builder/getdeps.py --allow-system-packages test

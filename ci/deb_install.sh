@@ -6,4 +6,5 @@ apt install -y \
     cmake \
     ninja-build \
     git \
+    python3 python3-pip \
     make

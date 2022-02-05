@@ -71,11 +71,18 @@ jobs:
 
       - name: system bootstrap
         run: |
-          yum install -y git gcc gcc-c++ make automake autoconf libtool wget python3 python3-devel
+          yum groupinstall -y "Development tools"
+          yum install -y git gcc gcc-c++ make automake autoconf \
+            libtool wget python3 python3-devel \
+            openssl-devel \
+            dnf
+          dnf install -y centos-release-scl
+          dnf install -y devtoolset-10*
 
       - name: compile
         shell: bash
         run: |
+          source scl_source enable devtoolset-10
           git clone https://github.com/facebook/folly
           cd folly 
           python3 ./build/fbcode_builder/getdeps.py --allow-system-packages build
@@ -84,6 +91,7 @@ jobs:
       - name: test
         shell: bash
         run: |
+          source scl_source enable devtoolset-10
           cd folly 
           python3 ./build/fbcode_builder/getdeps.py --allow-system-packages test || true
           ls /tmp/

@@ -8,3 +8,6 @@ apt install -y \
     git \
     python3 python3-pip \
     make
+
+apt install -y \
+    libssl-dev

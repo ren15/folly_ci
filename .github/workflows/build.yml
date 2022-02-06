@@ -82,16 +82,16 @@ jobs:
       - name: compile
         shell: bash
         run: |
-          source scl_source enable devtoolset-10
+          # source scl_source enable devtoolset-10
           git clone https://github.com/facebook/folly
           cd folly 
-          python3 ./build/fbcode_builder/getdeps.py --allow-system-packages build
+          scl enable devtoolset-10 "python3 ./build/fbcode_builder/getdeps.py --allow-system-packages build"
           ls /tmp/
 
       - name: test
         shell: bash
         run: |
-          source scl_source enable devtoolset-10
+          # source scl_source enable devtoolset-10
           cd folly 
-          python3 ./build/fbcode_builder/getdeps.py --allow-system-packages test || true
+          scl enable devtoolset-10 "python3 ./build/fbcode_builder/getdeps.py --allow-system-packages test || true"
           ls /tmp/

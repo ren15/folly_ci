@@ -64,34 +64,29 @@ jobs:
           ls /tmp/
   centos7:
     runs-on: ubuntu-20.04
-    container: centos:7
+    container: fedora:35
 
     steps:
       - uses: actions/checkout@v2
-
       - name: system bootstrap
         run: |
-          yum groupinstall -y "Development tools"
-          yum install -y git gcc gcc-c++ make automake autoconf \
+          dnf groupinstall -y "Development tools"
+          dnf install -y git gcc gcc-c++ make automake autoconf \
             libtool wget python3 python3-devel \
             openssl-devel \
             dnf
-          dnf install -y centos-release-scl
-          dnf install -y devtoolset-10*
 
       - name: compile
         shell: bash
         run: |
-          # source scl_source enable devtoolset-10
           git clone https://github.com/facebook/folly
           cd folly 
-          scl enable devtoolset-10 "python3 ./build/fbcode_builder/getdeps.py --allow-system-packages build"
+          python3 ./build/fbcode_builder/getdeps.py --allow-system-packages build
           ls /tmp/
 
       - name: test
         shell: bash
         run: |
-          # source scl_source enable devtoolset-10
           cd folly 
-          scl enable devtoolset-10 "python3 ./build/fbcode_builder/getdeps.py --allow-system-packages test || true"
+          python3 ./build/fbcode_builder/getdeps.py --allow-system-packages test || true
           ls /tmp/

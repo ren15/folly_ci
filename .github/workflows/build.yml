@@ -62,31 +62,3 @@ jobs:
           cd folly 
           python3 ./build/fbcode_builder/getdeps.py --allow-system-packages test || true
           ls /tmp/
-  centos7:
-    runs-on: ubuntu-20.04
-    container: fedora:35
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: system bootstrap
-        run: |
-          dnf groupinstall -y "Development tools"
-          dnf install -y git gcc gcc-c++ make automake autoconf \
-            libtool wget python3 python3-devel \
-            openssl-devel \
-            dnf
-
-      - name: compile
-        shell: bash
-        run: |
-          git clone https://github.com/facebook/folly
-          cd folly 
-          python3 ./build/fbcode_builder/getdeps.py --allow-system-packages build
-          ls /tmp/
-
-      - name: test
-        shell: bash
-        run: |
-          cd folly 
-          python3 ./build/fbcode_builder/getdeps.py --allow-system-packages test || true
-          ls /tmp/

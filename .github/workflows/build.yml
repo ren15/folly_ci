@@ -7,7 +7,11 @@ env:
 jobs:
   build:
     runs-on: ubuntu-20.04
-    container: debian:11
+    container: ubuntu-20.04
+
+    strategy:
+      matrix:
+        git_checkout_commit: [1,2,3,4,5]    
 
     steps:
       - uses: actions/checkout@v2
@@ -18,6 +22,8 @@ jobs:
       - name: git clone folly
         run: |
           git clone https://github.com/facebook/folly
+          cd folly
+          git checkout HEAD~${{ env.git_checkout_commit }}
 
       - name: compile
         shell: bash

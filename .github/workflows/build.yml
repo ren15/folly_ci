@@ -24,7 +24,7 @@ jobs:
         run: |
           git clone https://github.com/facebook/folly
           cd folly
-          git checkout HEAD~${{ env.git_checkout_commit }}
+          git checkout HEAD~${{ matrix.git_checkout_commit }}
 
       - name: compile
         shell: bash

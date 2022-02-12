@@ -11,4 +11,5 @@ apt install -y \
     make
 
 apt install -y \
-    libssl-dev
+    libssl-dev \
+    m4

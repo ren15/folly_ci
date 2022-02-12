@@ -8,6 +8,7 @@ jobs:
   build:
     runs-on: ubuntu-20.04
     strategy:
+      fail-fast: false
       matrix:
         container_image: ["ubuntu:20.04","ubuntu:18.04","debian:11","debian:10"]
         git_checkout_commit: [1,2,3,4,5]    

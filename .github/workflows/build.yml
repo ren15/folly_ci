@@ -11,7 +11,8 @@ jobs:
       matrix:
         container_image: ["ubuntu:20.04","ubuntu:18.04","debian:11","debian:10"]
         git_checkout_commit: [1,2,3,4,5]    
-    container: ${{ env.container_image }}
+    container: 
+      image: ${{ env.container_image }}
 
     steps:
       - uses: actions/checkout@v2

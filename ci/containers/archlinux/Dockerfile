@@ -17,7 +17,7 @@ RUN \
         double-conversion \
         fmt \
         gflags \
-        glog \
+        google-glog \
         gtest \
         libevent \
         lz4 \

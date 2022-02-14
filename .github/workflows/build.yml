@@ -1,8 +1,5 @@
 name: ci
-on:
-  push:
-    paths:
-      - "!README.md"
+on: push
 
 env:
   DEBIAN_FRONTEND: noninteractive

@@ -92,12 +92,12 @@ jobs:
       - name: Build libsodium
         run: python3 ${{ env.GET_DEPS_PY }} build --no-tests libsodium
       - name: Build folly
-        run: python3 ${{ env.GET_DEPS_PY }} build --src-dir=. folly  --project-install-prefix folly:/usr/local
+        run: python3 ${{ env.GET_DEPS_PY }} build --src-dir=folly folly  --project-install-prefix folly:/usr/local
       - name: Copy artifacts
-        run: python3 ${{ env.GET_DEPS_PY }} fixup-dyn-deps --strip --src-dir=. folly _artifacts/linux  --project-install-prefix folly:/usr/local --final-install-prefix /usr/local
+        run: python3 ${{ env.GET_DEPS_PY }} fixup-dyn-deps --strip --src-dir=folly folly _artifacts/linux  --project-install-prefix folly:/usr/local --final-install-prefix /usr/local
       - uses: actions/upload-artifact@v2
         with:
           name: folly
           path: _artifacts
       - name: Test folly
-        run: python3 ${{ env.GET_DEPS_PY }} test --src-dir=. folly  --project-install-prefix folly:/usr/local
+        run: python3 ${{ env.GET_DEPS_PY }} test --src-dir=folly folly  --project-install-prefix folly:/usr/local

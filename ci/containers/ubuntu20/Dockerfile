@@ -2,7 +2,7 @@ FROM ubuntu:20.04
 WORKDIR /root
 ENV DEBIAN_FRONTEND=noninteractive
 COPY compile_folly.sh /root
-COPY folly /root/
+COPY folly /root/folly
 RUN \
     apt-get update && \
     apt-get upgrade -y && \

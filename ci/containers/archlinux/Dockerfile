@@ -1,7 +1,7 @@
 FROM archlinux:latest
 WORKDIR /root
 COPY compile_folly.sh /root
-COPY folly /root/
+COPY folly /root/folly
 RUN \
     pacman -Syu --noconfirm \
     && yes | pacman -S --noconfirm base-devel \

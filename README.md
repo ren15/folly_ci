@@ -14,3 +14,4 @@ https://github.com/facebook/folly
 ### Not working release
 - v2022.02.14
 - v2022.02.07
+- v2022.01.03

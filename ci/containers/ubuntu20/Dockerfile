@@ -14,4 +14,5 @@ RUN \
         python3 python3-pip \
         build-essential \
         git
+RUN cd /root && ./build/fbcode_builder/getdeps.py install-system-deps --recursive
 RUN bash /root/compile_folly.sh

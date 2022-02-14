@@ -16,6 +16,7 @@ RUN \
         ninja-build \
         cmake \
         make \
+        libssl-dev \
         git
 RUN cd /root/folly && ./build/fbcode_builder/getdeps.py install-system-deps --recursive
 RUN bash /root/compile_folly.sh

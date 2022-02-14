@@ -1,5 +1,8 @@
 name: ci
-on: push
+on:
+  push:
+    paths:
+      - "!README.md"
 
 env:
   DEBIAN_FRONTEND: noninteractive
@@ -10,8 +13,17 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        container_image: ["ubuntu:20.04","debian:11"]
-    container: 
+        container_image:
+          ["ubuntu:18.04", "ubuntu:20.04", "debian:9", "debian:10", "debian:11"]
+        git_tag:
+          [
+            "v2022.02.14.00",
+            "v2022.02.07.00",
+            "v2022.01.03.00",
+            "v2021.11.01.00",
+            "v2021.10.04.00",
+          ]
+    container:
       image: ${{ matrix.container_image }}
     env:
       GET_DEPS_PY: folly/build/fbcode_builder/getdeps.py
@@ -25,7 +37,7 @@ jobs:
         run: |
           git clone https://github.com/facebook/folly
           cd folly
-          git checkout tags/v2022.02.07.00
+          git checkout tags/${{ matrix.git_tag }}
 
       - name: Fetch boost
         run: python3 ${{ env.GET_DEPS_PY }} fetch --no-tests boost

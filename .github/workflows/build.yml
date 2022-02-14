@@ -13,10 +13,9 @@ jobs:
         container_image: ["ubuntu:20.04","debian:11"]
     container: 
       image: ${{ matrix.container_image }}
-
+    env:
+      GET_DEPS_PY: folly/build/fbcode_builder/getdeps.py
     steps:
-      - env:
-          GET_DEPS_PY: folly/build/fbcode_builder/getdeps.py
       - uses: actions/checkout@v2
       - name: system bootstrap
         run: |

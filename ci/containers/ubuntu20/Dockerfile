@@ -10,9 +10,12 @@ RUN \
         sudo \
         vim \
         ssh \
-        gcc \
+        gcc g++ \
         python3 python3-pip \
         build-essential \
+        ninja-build \
+        cmake \
+        make \
         git
 RUN cd /root/folly && ./build/fbcode_builder/getdeps.py install-system-deps --recursive
 RUN bash /root/compile_folly.sh

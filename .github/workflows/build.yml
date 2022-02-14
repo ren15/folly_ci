@@ -8,7 +8,7 @@ jobs:
       fail-fast: false
       matrix:
         container_image: ["archlinux", "ubuntu20"]
-        git_tag: ["v2022.01.31.00","v2021.05.03.00"]
+        git_tag: ["v2022.01.31.00"]
 
     steps:
       - uses: actions/checkout@v2

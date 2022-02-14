@@ -4,12 +4,12 @@ COPY compile_folly.sh /root
 COPY folly /root/
 RUN \
     pacman -Syu --noconfirm \
+    && yes | pacman -S --noconfirm base-devel \
     && pacman -S --noconfirm \
         sudo \
         vim \
         openssh \
-        base-devel \
-        python3 python3-pip \
+        python3 python-pip \
         git \
         cmake \
         boost \

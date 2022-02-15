@@ -37,7 +37,9 @@ jobs:
 
       - name: install mold
         run: |
+          eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
           brew install mold
+          mold --version
 
       - name: git clone folly
         run: |

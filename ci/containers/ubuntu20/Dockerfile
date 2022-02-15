@@ -1,7 +1,6 @@
 FROM ubuntu:20.04
 WORKDIR /root
 ENV DEBIAN_FRONTEND=noninteractive
-COPY compile_folly.sh /root
 COPY folly /root/folly
 RUN \
     apt-get update && \
@@ -19,4 +18,4 @@ RUN \
         libssl-dev \
         git
 RUN cd /root/folly && ./build/fbcode_builder/getdeps.py install-system-deps --recursive
-RUN cd /root/folly && ./build/fbcode_builder/getdeps.py --allow-system-packages build
+RUN cd /root/folly && ./build/fbcode_builder/getdeps.py --no-tests --allow-system-packages build

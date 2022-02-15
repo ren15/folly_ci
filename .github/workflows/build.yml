@@ -28,10 +28,13 @@ jobs:
       - name: system bootstrap
         run: |
           bash ci/deb_install.sh
+      - name: Set up Homebrew
+        id: set-up-homebrew
+        uses: Homebrew/actions/setup-homebrew@master
 
       - name: setup mold
         run: |
-          curl -fsSL https://raw.githubusercontent.com/ren15/mold_ci/HEAD/install.sh | bash
+          brew install mold
 
       - name: git clone folly
         run: |

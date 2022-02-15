@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM debian:10
 WORKDIR /root
 ENV DEBIAN_FRONTEND=noninteractive
 COPY compile_folly.sh /root

@@ -17,5 +17,10 @@ RUN \
         make \
         libssl-dev \
         git
+RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+RUN eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && \
+    brew install mold
 RUN cd /root/folly && ./build/fbcode_builder/getdeps.py install-system-deps --recursive
-RUN cd /root/folly && ./build/fbcode_builder/getdeps.py --allow-system-packages build --no-tests
+RUN eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" && \
+    cd /root/folly && \
+    mold -run ./build/fbcode_builder/getdeps.py --allow-system-packages build --no-tests

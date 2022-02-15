@@ -48,71 +48,71 @@ jobs:
           git checkout tags/${{ matrix.git_tag }}
 
       - name: Fetch boost
-        run: mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests boost
+        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests boost
       - name: Fetch ninja
-        run: mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests ninja
+        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests ninja
       - name: Fetch cmake
-        run: mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests cmake
+        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests cmake
       - name: Fetch double-conversion
-        run: mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests double-conversion
+        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests double-conversion
       - name: Fetch fmt
-        run: mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests fmt
+        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests fmt
       - name: Fetch gflags
-        run: mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests gflags
+        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests gflags
       - name: Fetch glog
-        run: mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests glog
+        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests glog
       - name: Fetch googletest
-        run: mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests googletest
+        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests googletest
       - name: Fetch libevent
-        run: mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests libevent
+        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests libevent
       - name: Fetch lz4
-        run: mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests lz4
+        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests lz4
       - name: Fetch snappy
-        run: mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests snappy
+        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests snappy
       - name: Fetch zstd
-        run: mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests zstd
+        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests zstd
       - name: Fetch autoconf
-        run: mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests autoconf
+        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests autoconf
       - name: Fetch automake
-        run: mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests automake
+        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests automake
       - name: Fetch libtool
-        run: mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests libtool
+        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests libtool
       - name: Fetch libsodium
-        run: mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests libsodium
+        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests libsodium
       - name: Build boost
-        run: mold -run python3 ${{ env.GET_DEPS_PY }} build --no-tests boost
+        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} build --no-tests boost
       - name: Build ninja
-        run: mold -run python3 ${{ env.GET_DEPS_PY }} build --no-tests ninja
+        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} build --no-tests ninja
       - name: Build cmake
-        run: mold -run python3 ${{ env.GET_DEPS_PY }} build --no-tests cmake
+        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} build --no-tests cmake
       - name: Build double-conversion
-        run: mold -run python3 ${{ env.GET_DEPS_PY }} build --no-tests double-conversion
+        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} build --no-tests double-conversion
       - name: Build fmt
-        run: mold -run python3 ${{ env.GET_DEPS_PY }} build --no-tests fmt
+        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} build --no-tests fmt
       - name: Build gflags
-        run: mold -run python3 ${{ env.GET_DEPS_PY }} build --no-tests gflags
+        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} build --no-tests gflags
       - name: Build glog
-        run: mold -run python3 ${{ env.GET_DEPS_PY }} build --no-tests glog
+        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} build --no-tests glog
       - name: Build googletest
-        run: mold -run python3 ${{ env.GET_DEPS_PY }} build --no-tests googletest
+        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} build --no-tests googletest
       - name: Build libevent
-        run: mold -run python3 ${{ env.GET_DEPS_PY }} build --no-tests libevent
+        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} build --no-tests libevent
       - name: Build lz4
-        run: mold -run python3 ${{ env.GET_DEPS_PY }} build --no-tests lz4
+        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} build --no-tests lz4
       - name: Build snappy
-        run: mold -run python3 ${{ env.GET_DEPS_PY }} build --no-tests snappy
+        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} build --no-tests snappy
       - name: Build zstd
-        run: mold -run python3 ${{ env.GET_DEPS_PY }} build --no-tests zstd
+        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} build --no-tests zstd
       - name: Build autoconf
-        run: mold -run python3 ${{ env.GET_DEPS_PY }} build --no-tests autoconf
+        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} build --no-tests autoconf
       - name: Build automake
-        run: mold -run python3 ${{ env.GET_DEPS_PY }} build --no-tests automake
+        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} build --no-tests automake
       - name: Build libtool
-        run: mold -run python3 ${{ env.GET_DEPS_PY }} build --no-tests libtool
+        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} build --no-tests libtool
       - name: Build libsodium
-        run: mold -run python3 ${{ env.GET_DEPS_PY }} build --no-tests libsodium
+        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} build --no-tests libsodium
       - name: Build folly
-        run: mold -run python3 ${{ env.GET_DEPS_PY }} build --src-dir=folly folly  --project-install-prefix folly:/usr/local
+        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} build --src-dir=folly folly  --project-install-prefix folly:/usr/local
       - name: Copy artifacts
         run: python3 ${{ env.GET_DEPS_PY }} fixup-dyn-deps --strip --src-dir=folly folly _artifacts/linux  --project-install-prefix folly:/usr/local --final-install-prefix /usr/local
       - uses: actions/upload-artifact@v2

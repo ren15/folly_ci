@@ -1,4 +1,4 @@
-name: ci
+name: official_ci
 on: push
 
 env:

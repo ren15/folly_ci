@@ -47,38 +47,26 @@ jobs:
           cd folly
           git checkout tags/${{ matrix.git_tag }}
 
-      - name: Fetch boost
-        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests boost
-      - name: Fetch ninja
-        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests ninja
-      - name: Fetch cmake
-        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests cmake
-      - name: Fetch double-conversion
-        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests double-conversion
-      - name: Fetch fmt
-        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests fmt
-      - name: Fetch gflags
-        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests gflags
-      - name: Fetch glog
-        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests glog
-      - name: Fetch googletest
-        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests googletest
-      - name: Fetch libevent
-        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests libevent
-      - name: Fetch lz4
-        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests lz4
-      - name: Fetch snappy
-        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests snappy
-      - name: Fetch zstd
-        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests zstd
-      - name: Fetch autoconf
-        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests autoconf
-      - name: Fetch automake
-        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests automake
-      - name: Fetch libtool
-        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests libtool
-      - name: Fetch libsodium
-        run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} fetch --no-tests libsodium
+      - name: Fetch 
+        run:  | 
+          export PATH=/home/linuxbrew/.linuxbrew/bin:${PATH}
+          export GET_DEPS=${{ env.GET_DEPS_PY }}
+          mold -run ${GET_DEPS} fetch --no-tests boost
+          mold -run ${GET_DEPS} fetch --no-tests ninja
+          mold -run ${GET_DEPS} fetch --no-tests cmake
+          mold -run ${GET_DEPS} fetch --no-tests double-conversion
+          mold -run ${GET_DEPS} fetch --no-tests fmt
+          mold -run ${GET_DEPS} fetch --no-tests gflags
+          mold -run ${GET_DEPS} fetch --no-tests glog
+          mold -run ${GET_DEPS} fetch --no-tests googletest
+          mold -run ${GET_DEPS} fetch --no-tests libevent
+          mold -run ${GET_DEPS} fetch --no-tests lz4
+          mold -run ${GET_DEPS} fetch --no-tests snappy
+          mold -run ${GET_DEPS} fetch --no-tests zstd
+          mold -run ${GET_DEPS} fetch --no-tests autoconf
+          mold -run ${GET_DEPS} fetch --no-tests automake
+          mold -run ${GET_DEPS} fetch --no-tests libtool
+          mold -run ${GET_DEPS} fetch --no-tests libsodium
       - name: Build boost
         run: /home/linuxbrew/.linuxbrew/bin/mold -run python3 ${{ env.GET_DEPS_PY }} build --no-tests boost
       - name: Build ninja

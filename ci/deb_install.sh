@@ -8,6 +8,7 @@ apt install -y \
     ninja-build \
     git \
     python3 python3-pip \
+    wget unzip \
     make
 
 apt install -y \

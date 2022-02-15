@@ -12,11 +12,7 @@ jobs:
       matrix:
         container_image:
           ["ubuntu:18.04", "debian:10", "ubuntu:20.04", "debian:11"]
-        git_tag:
-          [
-            "v2022.01.31.00",
-            "v2021.05.03.00",
-          ]
+        git_tag: ["v2021.05.03.00"]
     container:
       image: ${{ matrix.container_image }}
     env:

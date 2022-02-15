@@ -1,4 +1,4 @@
-name: ci
+name: build_image
 on: push
 
 env:
@@ -11,7 +11,7 @@ env:
   IMAGE_TAG: 0.0.1
 
 jobs:
-  build:
+  build_image:
     runs-on: ubuntu-20.04
     strategy:
       fail-fast: false

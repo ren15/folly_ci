@@ -18,4 +18,4 @@ RUN \
         libssl-dev \
         git
 RUN cd /root/folly && ./build/fbcode_builder/getdeps.py install-system-deps --recursive
-RUN cd /root/folly && ./build/fbcode_builder/getdeps.py --no-tests --allow-system-packages build
+RUN cd /root/folly && ./build/fbcode_builder/getdeps.py --allow-system-packages build --no-tests 

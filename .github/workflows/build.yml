@@ -10,14 +10,13 @@ env:
   DEBIAN_FRONTEND: noninteractive
   IMAGE_TAG: 0.0.1
 
-
 jobs:
   build:
     runs-on: ubuntu-20.04
     strategy:
       fail-fast: false
       matrix:
-        container_image: ["debian10", "ubuntu20"]
+        container_image: ["debian10", "ubuntu20", "debian11", "debiansid"]
         git_tag: ["v2021.05.03.00"]
 
     steps:
@@ -37,9 +36,9 @@ jobs:
         run: |
           cd ci/containers/${{ matrix.container_image }}
           cp -r ../../../folly/ .
-          docker build -t ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ matrix.container_image }}_${{ matrix.git_tag }}_${{ env.IMAGE_TAG }} .
-
+          docker build -t ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ matrix.container_image }}_${{ matrix.git_tag }} .
 
       - name: Push docker image
         run: |
-          docker push ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ matrix.container_image }}_${{ matrix.git_tag }}_${{ env.IMAGE_TAG }}
+          docker image inspect ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ matrix.container_image }}_${{ matrix.git_tag }} --format='{{.Size}}' 
+          docker push ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ matrix.container_image }}_${{ matrix.git_tag }}

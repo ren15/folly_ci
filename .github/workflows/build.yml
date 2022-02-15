@@ -11,7 +11,13 @@ jobs:
       fail-fast: false
       matrix:
         container_image:
-          ["ubuntu:18.04", "debian:10", "ubuntu:20.04", "debian:11"]
+          [
+            "ubuntu:18.04",
+            "debian:10",
+            "ubuntu:20.04",
+            "debian:11",
+            "debian:sid",
+          ]
         git_tag: ["v2021.05.03.00"]
     container:
       image: ${{ matrix.container_image }}

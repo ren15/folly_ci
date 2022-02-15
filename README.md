@@ -6,7 +6,8 @@ folly has compiler internal errors
 
 https://github.com/facebook/folly
 
-## Notes
+## Notes:
+debian 9's python cannot work
 
 ### Not working distro
 - debian:9 

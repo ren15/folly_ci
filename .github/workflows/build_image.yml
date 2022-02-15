@@ -1,0 +1,44 @@
+name: build_image
+on: push
+
+env:
+  IMAGE_REGISTRY: "ghcr.io"
+  REGISTRY_USER: "${{ github.repository_owner }}"
+  REGISTRY_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+  IMAGE_REPO: "ghcr.io/${{ github.repository_owner }}"
+  IMAGE_NAME: "folly-ci-dev-env"
+  DEBIAN_FRONTEND: noninteractive
+  IMAGE_TAG: 0.0.1
+
+jobs:
+  build_image:
+    runs-on: ubuntu-20.04
+    strategy:
+      fail-fast: false
+      matrix:
+        container_image: ["debian10", "ubuntu20", "debian11", "debiansid"]
+        git_tag: ["v2021.05.03.00"]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Login docker
+        run: |
+          echo ${{ env.REGISTRY_TOKEN }} | docker login ${{ env.IMAGE_REGISTRY }} -u ${{ env.REGISTRY_USER }} --password-stdin
+
+      - name: git clone folly
+        run: |
+          git clone https://github.com/facebook/folly
+          cd folly
+          git checkout tags/${{ matrix.git_tag }}
+
+      - name: docker build
+        run: |
+          cd ci/containers/${{ matrix.container_image }}
+          cp -r ../../../folly/ .
+          docker build -t ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ matrix.container_image }}_${{ matrix.git_tag }} .
+
+      - name: Push docker image
+        run: |
+          docker image inspect ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ matrix.container_image }}_${{ matrix.git_tag }} --format='{{.Size}}' 
+          docker push ${{ env.IMAGE_REPO }}/${{ env.IMAGE_NAME }}:${{ matrix.container_image }}_${{ matrix.git_tag }}

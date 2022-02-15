@@ -32,6 +32,8 @@ jobs:
       - name: Setup brew
         run: |
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+          echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /github/home/.profile
+          eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
       - name: install mold
         run: |

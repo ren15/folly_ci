@@ -1,5 +1,9 @@
 name: official_ci
-on: push
+
+on:
+  push:
+    paths:
+      - '.github/workflows/official_ci.yml'
 
 env:
   DEBIAN_FRONTEND: noninteractive

@@ -1,5 +1,9 @@
 name: build_image
-on: push
+on:
+  push:
+    paths:
+      - 'ci/containers/**/**'
+      - '.github/workflows/build_image.yml'
 
 env:
   IMAGE_REGISTRY: "ghcr.io"
